@@ -121,7 +121,7 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default
 
 # Camera
-$(call soong_config_set,samsungCameraVars,needs_sec_reserved_field,true)
+$(call soong_config_set_boot,camera,override_format_from_reserved,true)
 
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_COPY_FILES += \
@@ -228,6 +228,7 @@ PRODUCT_PACKAGES += \
 $(call soong_config_set,lineage_health,fast_charge_node,/sys/class/sec/switch/afc_disable)
 $(call soong_config_set,lineage_health,fast_charge_value_none,1)
 $(call soong_config_set,lineage_health,fast_charge_value_fast_charge,0)
+$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
