@@ -121,7 +121,7 @@ PRODUCT_PACKAGES += \
     audio.bluetooth.default
 
 # Camera
-$(call soong_config_set,samsungCameraVars,needs_sec_reserved_field,true)
+$(call soong_config_set_bool,samsungCameraVars,needs_sec_reserved_field,true)
 
 ifneq ($(TARGET_IS_TABLET),true)
 PRODUCT_COPY_FILES += \
@@ -325,6 +325,15 @@ ifneq ($(TARGET_IS_WIFI-ONLY),true)
 PRODUCT_PACKAGES += \
     secril_config_svc \
     sehradiomanager
+endif
+
+# S Pen
+ifeq ($(TARGET_IS_TABLET),true)
+PRODUCT_PACKAGES += \
+    SPenActions
+
+PRODUCT_PACKAGES += \
+    vendor.samsung.hardware.spen-service
 endif
 
 # Sensors
